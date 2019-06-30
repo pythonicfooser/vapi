@@ -53,7 +53,7 @@ async def transfer(request):
             {'$set': {
                 "amount": new_to_user_amount
             }})
-        return Response(body=dumps({"message": 'amount updated'}),
+        return Response(body=dumps({"message": 'Transfer complete'}),
                         content_type="application/json")
 
     except ValidationError:

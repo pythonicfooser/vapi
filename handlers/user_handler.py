@@ -24,9 +24,11 @@ async def set_user(request):
 
         input_data['amount'] = 0
         request.app['db']['users'].insert_one(input_data)
+        request.app['logger'].info(f"Added user { input_data['username'] }")
         return Response(body=dumps({"status": "User added"}),
                         content_type="application/json")
     except ValidationError:
+        request.app['logger'].error("Error with input fields")
         return Response(body=dumps({"status": "Error in sent fields"}),
                         content_type="application/json")
     except JSONDecodeError:
@@ -56,6 +58,7 @@ async def get_user_balance(request):
         return Response(body=dumps({"amount": exist_user['amount']}),
                         content_type="application/json")
     except ValidationError:
+        request.app['logger'].error("Error with input fields")
         return Response(body=dumps({"status": "Error in sent fields"}),
                         content_type="application/json")
 
@@ -88,6 +91,8 @@ async def increase_user_balance(request):
                             content_type="application/json")
 
         new_amount = exist_user['amount'] + input_data['amount']
+        request.app['logger'].info(
+            f"Updated amount for user: { input_data['username'] }")
         await request.app['db']['users'].update_one(
             {"username": input_data['username']},
             {'$set': {
