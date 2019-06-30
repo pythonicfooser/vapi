@@ -20,6 +20,8 @@ This is a small API for transfer money between users.
 - Unit tests for checking that all runs smooth
 - Dual Mongo db for replication
 - Better docstrings
+- Use Cookiecutter for faster project builds
+- aiohttp "fine tune" (timeouts, HTTPS, CORS, etc)
 
 **docker-compose required**
 
