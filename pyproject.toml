@@ -9,6 +9,11 @@ python = "^3.7"
 aiohttp = "^3.5"
 motor = "^2.0"
 jsonschema = "^3.0"
+pytest = "^5.0"
+pytest-flake8 = "^1.0"
+bandit = "^1.6"
+pytest-bandit = "^0.5.1"
+tox = "^3.13"
 
 [tool.poetry.dev-dependencies]
 

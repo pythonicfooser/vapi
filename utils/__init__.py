@@ -1,1 +1,1 @@
-from .router import set_routes
+from .router import set_routes # noqa

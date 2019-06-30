@@ -1,9 +1,15 @@
 user_schema = {
     "type": "object",
     "properties": {
-        "name" : {"type" : "string"},
-        "username" : {"type" : "string"},
-        "dni": {"type": "string"}
+        "name": {
+            "type": "string"
+        },
+        "username": {
+            "type": "string"
+        },
+        "dni": {
+            "type": "string"
+        }
     },
     "required": ["name", "username", "dni"]
 }
@@ -11,7 +17,9 @@ user_schema = {
 query_schema = {
     "type": "object",
     "properties": {
-        "username" : {"type" : "string"}
+        "username": {
+            "type": "string"
+        }
     },
     "required": ["username"]
 }
@@ -19,8 +27,12 @@ query_schema = {
 increase_amount_schema = {
     "type": "object",
     "properties": {
-        "username" : {"type" : "string"},
-        "amount": {"type": "number"}
+        "username": {
+            "type": "string"
+        },
+        "amount": {
+            "type": "number"
+        }
     },
     "required": ["username", "amount"]
 }
@@ -28,10 +40,15 @@ increase_amount_schema = {
 transfer_amount_schema = {
     "type": "object",
     "properties": {
-        "from_username" : {"type" : "string"},
-        "to_username": {"type" : "string"},
-        "amount": {"type": "number"}
+        "from_username": {
+            "type": "string"
+        },
+        "to_username": {
+            "type": "string"
+        },
+        "amount": {
+            "type": "number"
+        }
     },
     "required": ["from_username", "to_username", "amount"]
 }
- 
