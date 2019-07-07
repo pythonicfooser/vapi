@@ -19,24 +19,30 @@ async def set_user(request):
         exist_user = await request.app['db']['users'].find_one(
             {"username": input_data['username']})
         if exist_user:
-            return Response(body=dumps({"status": "User already exists"}),
+            return Response(status=409,
+                            body=dumps({"message": "User already exists"}),
                             content_type="application/json")
 
         input_data['amount'] = 0
         request.app['db']['users'].insert_one(input_data)
         request.app['logger'].info(f"Added user { input_data['username'] }")
-        return Response(body=dumps({"status": "User added"}),
+        return Response(status=201,
+                        body=dumps({"message": "User created"}),
                         content_type="application/json")
     except ValidationError:
         request.app['logger'].error("Error with input fields")
-        return Response(body=dumps({"status": "Error in sent fields"}),
+        return Response(status=400,
+                        body=dumps({"message": "Error in sent fields"}),
                         content_type="application/json")
     except JSONDecodeError:
-        return Response(body=dumps({"status": "Format error"}),
+        return Response(status=400,
+                        body=dumps({"message": "Format error"}),
                         content_type="application/json")
     except Exception:
-        return Response(body=dumps(
-            {"Error": "Uh oh... Something went wrong! We are working on it!"}),
+        return Response(body=dumps(status=500, {
+            "message":
+            "Uh oh... Something went wrong! We are working on it!"
+        }),
                         content_type="application/json")
 
 
