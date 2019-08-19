@@ -7,7 +7,7 @@ pipeline {
     }
     stage('first_data'){
         steps{
-	        sh echo "Jenkinsfile"
+	        sh echo "Jenkinsfile."
         }
     }
   }
