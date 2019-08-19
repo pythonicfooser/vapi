@@ -3,6 +3,6 @@ node {
      sh "docker build -t vapi:proof ."
    }
    stage("second"){
-     sh "echo 'hi foo'"
+     sh "echo 'hi'"
    }
 }
