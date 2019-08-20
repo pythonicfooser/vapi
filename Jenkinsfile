@@ -7,6 +7,6 @@ node {
      docker.build("pwall:master")
    }
    stage("second"){
-     sh "echo 'hi fool'"
+     sh "echo 'hi foo'"
    }
 }
