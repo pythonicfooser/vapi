@@ -1,6 +1,6 @@
 node {
    stage("first") {
-     sh "docker build -t vapi:proof ."
+     docker.build("pwall:master")
    }
    stage("second"){
      sh "echo 'hi fool'"
