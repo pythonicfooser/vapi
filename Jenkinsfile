@@ -8,5 +8,6 @@ node {
    }
    stage("Deploy"){
      sh "ansible-playbook playbook.yaml -v --extra-vars '${BRANCH_NAME}=true hosts=${BRANCH_NAME}'"
+     sh 'env'
    }
 }
