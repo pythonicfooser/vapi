@@ -4,9 +4,9 @@ node {
      checkout scm
    }
    stage("Build docker image") {
-     docker.build("pwall:${GIT_BRANCH}")
+     docker.build("pwall:${BRANCH_NAME}")
    }
    stage("Deploy"){
-     sh "ansible-playbook playbook.yaml -v --extra-vars '${GIT_BRANCH}=true hosts=${GIT_BRANCH}'"
+     sh "ansible-playbook playbook.yaml -v --extra-vars '${BRANCH_NAME}=true hosts=${BRANCH_NAME}'"
    }
 }
