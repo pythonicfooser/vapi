@@ -6,8 +6,10 @@
       master: false
       develop: false
   tasks:
-    - include: envs/develop.yaml
+    - name: Include tasks if env is develop
+      include: envs/develop.yaml
       when: develop
-    - include: envs/master.yaml
+    - name: Include tasks if env is master
+      include: envs/master.yaml
       when: master
 ...
