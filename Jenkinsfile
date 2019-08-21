@@ -3,10 +3,10 @@ node {
      deleteDir()
      checkout scm
    }
-   stage("first") {
-     docker.build("pwall:master")
+   stage("Build docker image") {
+     docker.build("pwall:${GIT_BRANCH}")
    }
-   stage("second"){
-     sh "env"
+   stage("Deploy"){
+     sh "ansible-playbook playbook.yaml -v --extra-vars '${GIT_BRANCH}=true hosts=${GIT_BRANCH}'"
    }
 }

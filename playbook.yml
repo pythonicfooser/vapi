@@ -1,0 +1,13 @@
+---
+- name: Proof include depending on environment 
+  hosts: "{{ hosts }}"
+  remote_user: thefoo 
+  vars:
+      master: false
+      develop: false
+  tasks:
+    - include: envs/develop.yaml
+      when: develop
+    - include: envs/master.yaml
+      when: master
+...
